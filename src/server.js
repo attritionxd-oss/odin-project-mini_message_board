@@ -1,6 +1,3 @@
-import { createServer } from "node:http";
-import { readFile } from "node:fs/promises";
-import { extname } from "node:path";
 import app from "#app.js";
 
 const HOSTNAME = "localhost";
@@ -10,15 +7,21 @@ const server = app.listen(PORT, HOSTNAME, (error) => {
   if (error) {
     throw error;
   }
+  // eslint-disable-next-line no-console
   console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
 });
 
-const gracefulShutdown = (signal) => {
+// eslint-disable-next-line require-await
+const gracefulShutdown = async (signal) => {
+  // eslint-disable-next-line no-console
   console.log(`\n${signal} received. Closing HTTP server...`);
+
+  // eslint-disable-next-line require-await
   server.close(async () => {
+    // eslint-disable-next-line no-console
     console.log("HTTP server closed.");
     // close open connections, e.g., db
-    process.exit(0);
+    process.exit(0); // eslint-disable-line no-process-exit
   });
 };
 
