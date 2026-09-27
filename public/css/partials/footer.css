@@ -1,0 +1,17 @@
+.footer__footer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background-color: var(--footer-bg);
+}
+
+.footer__footer-wrapper p,
+.footer__footer-wrapper a {
+  font-size: 1.2rem;
+}
+
+.footer__footer-links {
+  display: flex;
+  align-items: center;
+}

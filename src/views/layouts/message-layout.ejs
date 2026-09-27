@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Message Board: <%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+  </head>
+  <body id="root">
+    <%- include("../partials/navbar") %>
+    <main class="main__main-wrapper">
+      <section class="view-message__wrapper">
+        <ul class="view-message__content-details">
+          <li class="view-message__close-wrapper">
+            <a
+              href="/"
+              aria-label="Close button: Return to All Messages"
+              class="icon-link"
+            >
+              <button type="button" class="view-message__close">
+                <%- include("../partials/close-icon") %>
+              </button>
+            </a>
+          </li>
+          <li class="view-message__message-property">
+            <span class="view-message__content-label"> User </span>
+            <span class="view-message__content"> <%= message.user %> </span>
+          </li>
+          <li class="view-message__message-property">
+            <span class="view-message__content-label"> Date sent </span>
+            <span class="view-message__content"> <%= message.added %> </span>
+          </li>
+          <li class="view-message__message-property">
+            <span class="view-message__content-label"> Message </span>
+            <span class="view-message__content"> <%= message.text %> </span>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <%- include("../partials/footer")  %>
+  </body>
+</html>

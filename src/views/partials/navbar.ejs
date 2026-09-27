@@ -1,0 +1,30 @@
+<nav class="navbar__navbar-wrapper">
+  <div class="navbar__site-header">
+    <h1 class="navbar__h1">
+      Online Message Board <%= ">" %>
+      <%= title %>
+    </h1>
+  </div>
+  <ul class="navbar__nav-links">
+    <li class="icon-link">
+      <a
+        href="/"
+        aria-label="View all messages"
+        class="icon-link"
+        title="All messages"
+      >
+        <%- include("chat-icon") %>
+      </a>
+    </li>
+    <li class="icon-link">
+      <a
+        href="/new"
+        aria-label="Create new message"
+        class="icon-link"
+        title="Create new message"
+      >
+        <%- include("chat-add-icon") %>
+      </a>
+    </li>
+  </ul>
+</nav>

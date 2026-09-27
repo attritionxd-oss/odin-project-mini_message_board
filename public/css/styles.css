@@ -1,0 +1,94 @@
+@import url("/css/globals.css");
+@import url("/css/partials/navbar.css");
+@import url("/css/partials/svg-icon.css");
+@import url("/css/partials/footer.css");
+@import url("/css/layouts/all-messages.css");
+@import url("/css/layouts/new-message.css");
+@import url("/css/layouts/view-message.css");
+
+* {
+  box-sizing: border-box;
+  font-size: var(--font-size);
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color: #ddd;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --card-bg: hsl(231, 14%, 15%);
+  --card-bg2: hsl(231, 14%, 15%);
+  --header-bg: var(--color-purple-900);
+  --footer-bg: var(--color-mono-200);
+  --border: #2e303a;
+  --card-border: #6f7a90;
+  --text-action-green: #01c17a;
+  --code-bg: #1f2028;
+  --accent: var(--color-purple-400);
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --accent-red: var(--color-alert-red);
+  --accent-yellow: var(--color-vivid-apricot);
+  --action-yellow: var(--color-yellow-200);
+  --action-blue: var(--color-action-blue);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--color-purple-200);
+  text-decoration: none;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0px, var(--header-height)) minmax(0px, 1fr) minmax(
+      0px,
+      var(--footer-height)
+    );
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-width: 375px;
+  min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
+}
+
+.navbar__navbar-wrapper {
+  grid-area: header;
+}
+
+.main__main-wrapper {
+  grid-area: main;
+  overflow-y: auto;
+}
+
+.footer__footer-wrapper {
+  grid-area: footer;
+}

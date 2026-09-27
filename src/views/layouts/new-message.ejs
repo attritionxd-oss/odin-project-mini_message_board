@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Message Board: <%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+  </head>
+  <body id="root">
+    <%- include("../partials/navbar") %>
+    <main class="main__main-wrapper">
+      <section class="new-message__wrapper">
+        <form
+          method="POST"
+          action="/new"
+          class="new-message__form"
+          aria-label="New message form"
+        >
+          <span class="new-message__close-wrapper">
+            <a
+              href="/"
+              aria-label="Close button: Return to All Messages"
+              class="icon-link"
+            >
+              <button type="button" class="new-message__close">
+                <%- include("../partials/close-icon") %>
+              </button>
+            </a>
+          </span>
+          <input
+            class="new-message__inputbox"
+            type="text"
+            name="user"
+            placeholder="Username"
+            required="true"
+            aria-label="Username input"
+          />
+          <textarea
+            class="new-message__inputbox"
+            name="message"
+            placeholder="Message"
+            autocorrect="on"
+            spellcheck="true"
+            wrap="soft"
+            required="true"
+            aria-label="Message input"
+          ></textarea>
+          <button
+            type="submit"
+            class="new-message__submit"
+            aria-label="Message submit button"
+          >
+            <%- include("../partials/send-icon") %>
+          </button>
+        </form>
+      </section>
+    </main>
+    <%- include("../partials/footer")  %>
+  </body>
+</html>

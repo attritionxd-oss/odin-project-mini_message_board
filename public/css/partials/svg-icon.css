@@ -1,0 +1,12 @@
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.svg-icon {
+  fill: var(--text-h);
+}
+
+.svg-icon:hover {
+  cursor: pointer;
+}

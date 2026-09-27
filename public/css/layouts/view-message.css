@@ -1,0 +1,53 @@
+.view-message__wrapper {
+  padding: calc(var(--standard-gap) * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.view-message__content-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--standard-gap);
+  max-width: 600px;
+  min-width: 60ch;
+  background-color: var(--color-mono-100);
+  padding: calc(var(--standard-gap) * 2);
+  border-radius: var(--border-radius);
+}
+
+.view-message__message-property {
+  display: grid;
+  grid-template-columns: 10ch 1fr;
+  grid-template-areas: "label detail";
+  align-items: center;
+}
+
+.view-message__content-label {
+  grid-area: label;
+  color: var(--text);
+  font-weight: 300;
+}
+
+.view-message__content {
+  grid-area: detail;
+  color: var(--text-h);
+  background-color: var(--card-bg);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+}
+
+.view-message__close-wrapper {
+  display: flex;
+  justify-content: end;
+}
+
+.view-message__close {
+  display: flex;
+  align-content: center;
+  width: fit-content;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: transparent;
+}

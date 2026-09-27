@@ -1,0 +1,11 @@
+<ul>
+  <% messages.forEach((message) => { %>
+  <a href="/<%= message.id %>">
+    <li id="<%= message.id %>">
+      <span><%= message.user %></span>
+      <span><%= message.text %></span>
+      <span><%= message.added %></span>
+    </li>
+  </a>
+  <% }) %>
+</ul>

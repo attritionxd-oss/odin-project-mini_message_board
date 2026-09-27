@@ -1,0 +1,59 @@
+:root {
+  --color-white-fff: #fff;
+  --color-mono-eee: #eee;
+  --color-mono-ddd: #ddd;
+  --color-mono-ccc: #ccc;
+  --color-mono-bbb: #bbb;
+  --color-mono-aaa: #aaa;
+  --color-mono-000: #000;
+  --color-mono-100: #111;
+  --color-mono-190: #191919;
+  --color-mono-200: #222;
+  --color-mono-300: #333;
+  --color-mono-400: #444;
+  --color-mono-600: #666;
+  --color-mono-700: #777;
+  --color-mono-800: #888;
+  --color-mono-900: #999;
+  --color-yellow-100: #ffd814;
+  --color-yellow-200: goldenrod;
+  --color-blue-100: cornflowerblue;
+  --color-purple-100: hsl(260, 100%, 90%);
+  --color-purple-200: #be9eff;
+  --color-purple-250: #ccb3ff;
+  --color-purple-300: #9059ff;
+  --color-purple-400: #c084fc;
+  --color-purple-800: hsl(287, 35%, 29%);
+  --color-purple-900: #391f40;
+  --color-electric-mint: #afffd7;
+  --color-soft-lavender: #e2ccff;
+  --color-sky-glow: #aeefff;
+  --color-peach-punch: #ffd1ba;
+  --color-lemon-fizz: #fff5ad;
+  --color-rose-petal: #ffb7ce;
+  --color-cyber-lime: #d4ff91;
+  --color-icy-periwinkle: #c2d1ff;
+  --color-vivid-apricot: #ffc09f;
+  --color-arctic-teal: #98fffb;
+  --color-alert-red: #da6666;
+  --color-action-blue: #4a90e2;
+  --color-confirm-green: #28a745;
+  --font-family-sans:
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--font-family-sans);
+  --font-monospace-default:
+    ui-monospace, SFMono-Regular, "Cascadia Mono", "Roboto Mono",
+    "DejaVu Sans Mono", "Liberation Mono", Menlo, Monaco, "Consolas",
+    "Source Code Pro", monospace;
+  font-size: 62.5%;
+  --font-size: 1.4rem;
+  --standard-gap: 1rem;
+  --border-radius: 1rem;
+  --checkbox-transition: all 0.4s;
+  --header-height: 4rem;
+  --icon-dimensions: 2rem;
+  --icon-color: #181616;
+  --footer-height: 4rem;
+  --form-group-gap: 1.5rem;
+}

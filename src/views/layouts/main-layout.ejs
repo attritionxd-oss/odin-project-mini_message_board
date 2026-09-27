@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Message Board: <%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+  </head>
+  <body id="root">
+    <%- include("../partials/navbar") %>
+    <main class="main__main-wrapper">
+      <section class="all-messages__wrapper">
+        <ul class="all-messages__list">
+          <% messages.forEach((message) => { %>
+          <li id="<%= message.id %>" class="all-messages__message-wrapper">
+            <span class="all-messages__contents">
+              <span class="all-messages__user"><%= message.user %>:&nbsp;</span>
+              <a href="/<%= message.id %>" class="all-messages__message">
+                <%= message.text %>
+              </a>
+            </span>
+            <span class="all-messages__add-date"><%= message.added %></span>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    </main>
+    <%- include("../partials/footer")  %>
+  </body>
+</html>
