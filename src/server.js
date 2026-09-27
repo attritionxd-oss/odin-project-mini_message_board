@@ -1,7 +1,10 @@
 import app from "#app.js";
+import { loadEnvFile } from "node:process";
 
-const HOSTNAME = "localhost";
-const PORT = 3000;
+loadEnvFile("./.env");
+
+const HOSTNAME = process.env.HOSTNAME;
+const PORT = process.env.PORT;
 
 const server = app.listen(PORT, HOSTNAME, (error) => {
   if (error) {
