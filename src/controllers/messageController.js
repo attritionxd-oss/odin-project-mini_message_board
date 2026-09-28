@@ -5,9 +5,9 @@ export async function getAllMessages(req, res) {
   const messages = await messagesDb.getAllMessages();
 
   if (!messages) {
-    res.status(500).render("layouts/main-layout", {
+    res.status(500).render("layouts/error-layout", {
       title: "Internal Server Error",
-      errorContent: "",
+      message: "",
     });
     return;
   }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Message Board: <%= title %></title>
+    <style>
+      #root {
+        color: #9ca3af;
+        background-color: #16171d;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+    </style>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+  </head>
+  <body id="root">
+    <main class="main__main-wrapper">
+      <h1><%= title %></h1>
+      <p><%= message %></p>
+    </main>
+  </body>
+</html>
