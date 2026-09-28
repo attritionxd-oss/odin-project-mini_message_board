@@ -1,6 +1,7 @@
 import express from "express";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { loadEnvFile } from "node:process";
 import basicLogger from "#middleware/logger.js";
 import {
   addMessage,
@@ -8,6 +9,8 @@ import {
   getMessageById,
   getMessageForm,
 } from "#controllers/messageController.js";
+
+loadEnvFile("./.env");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,7 +23,9 @@ app.set("views", join(__dirname, "views"));
 const publicPath = join(__dirname, "..", "public");
 app.use(express.static(publicPath));
 app.use(express.urlencoded({ extended: true }));
-app.use(basicLogger);
+if (process.env.NODE_ENV === "development") {
+  app.use(basicLogger);
+}
 
 app.get("/new", getMessageForm);
 app.post("/new", addMessage);
