@@ -3,6 +3,8 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { loadEnvFile } from "node:process";
 import basicLogger from "#middleware/basicLogger.js";
+import globalRateLimiter from "#middleware/globalRateLimiter.js";
+import ipRateLimiter from "#middleware/ipRateLimiter.js";
 import {
   addMessage,
   getAllMessages,
@@ -26,6 +28,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(basicLogger);
 }
 app.use(express.static(publicPath));
+app.use(globalRateLimiter);
+app.use(ipRateLimiter);
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/new", getMessageForm);
