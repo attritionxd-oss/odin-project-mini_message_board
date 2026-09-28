@@ -2,7 +2,7 @@ import express from "express";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { loadEnvFile } from "node:process";
-import basicLogger from "#middleware/logger.js";
+import basicLogger from "#middleware/basicLogger.js";
 import {
   addMessage,
   getAllMessages,
