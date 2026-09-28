@@ -14,18 +14,19 @@ loadEnvFile("./.env");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const publicPath = join(__dirname, "..", "public");
 
 const app = express();
 
+app.set("trust proxy", 1);
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
 
-const publicPath = join(__dirname, "..", "public");
-app.use(express.static(publicPath));
-app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === "development") {
   app.use(basicLogger);
 }
+app.use(express.static(publicPath));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/new", getMessageForm);
 app.post("/new", addMessage);
