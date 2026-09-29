@@ -1,7 +1,13 @@
 import app from "#app.js";
 import { loadEnvFile } from "node:process";
 
-loadEnvFile("./.env");
+if (process.env.NODE_ENV !== "production") {
+  try {
+    loadEnvFile("./.env");
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 const HOSTNAME = process.env.HOSTNAME;
 const PORT = process.env.PORT;

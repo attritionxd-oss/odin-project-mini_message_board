@@ -1,7 +1,6 @@
 import express from "express";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { loadEnvFile } from "node:process";
 import basicLogger from "#middleware/basicLogger.js";
 import globalRateLimiter from "#middleware/globalRateLimiter.js";
 import ipRateLimiter from "#middleware/ipRateLimiter.js";
@@ -11,8 +10,6 @@ import {
   getMessageById,
   getMessageForm,
 } from "#controllers/messageController.js";
-
-loadEnvFile("./.env");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
