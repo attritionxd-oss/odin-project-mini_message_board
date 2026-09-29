@@ -21,7 +21,7 @@ app.set("trust proxy", 1);
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views"));
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV !== "production") {
   app.use(basicLogger);
 }
 app.use(express.static(publicPath));
