@@ -9,15 +9,18 @@ if (process.env.NODE_ENV !== "production") {
   }
 }
 
-const HOSTNAME = process.env.HOSTNAME;
-const PORT = process.env.PORT;
+const HOST = process.env.HOST || "0.0.0.0";
+const PORT = process.env.PORT || 3000;
+const PUBLIC_HOST = process.env.RENDER_EXTERNAL_HOSTNAME || `localhost:${PORT}`;
 
-const server = app.listen(PORT, HOSTNAME, (error) => {
+const server = app.listen(PORT, HOST, (error) => {
   if (error) {
     throw error;
   }
   // eslint-disable-next-line no-console
-  console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
+  console.log(`Server listening internally on http://${HOST}:${PORT}/`);
+  // eslint-disable-next-line no-console
+  console.log(`Publicly accessible at https://${PUBLIC_HOST}`);
 });
 
 // eslint-disable-next-line require-await
