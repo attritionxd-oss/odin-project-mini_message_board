@@ -24,7 +24,10 @@
   },
   "dependencies": {
     "ejs": "^6.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "pg": "^8.23.1",
+    "pg-format": "^1.0.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -33,7 +36,8 @@
     "eslint-plugin-node": "^11.1.0",
     "globals": "^17.12.0",
     "prettier": "^3.9.9",
-    "prettier-plugin-ejs": "^1.0.3"
+    "prettier-plugin-ejs": "^1.0.3",
+    "prettier-plugin-sql": "^0.20.0"
   },
   "imports": {
     "#*": "./src/*",
