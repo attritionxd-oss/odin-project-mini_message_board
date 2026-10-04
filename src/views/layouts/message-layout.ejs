@@ -50,7 +50,7 @@
                 required="true"
                 aria-label="Message input"
                 form="edit-message-form"
-              ><%= message.text %></textarea>
+              ><%- message.text %></textarea>
             </li>
           </ul>
           <div class="view-message__button-wrapper">
@@ -80,6 +80,7 @@
               </button>
             </form>
           </div>
+          <%- include("../partials/errors") %>
         </div>
       </section>
     </main>

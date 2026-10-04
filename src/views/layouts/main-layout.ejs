@@ -25,7 +25,7 @@
                 ><%= message.user || "no username" %>:&nbsp;</span
               >
               <a href="/<%= message.id %>" class="all-messages__message">
-                <%= message.text || "emtpy text" %>
+                <%- message.text || "emtpy text" %>
               </a>
             </span>
             <span class="all-messages__add-date"><%= message.added %></span>

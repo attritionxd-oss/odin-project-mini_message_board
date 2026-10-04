@@ -1,0 +1,7 @@
+<% if (locals.errors) { %>
+<ul style="margin-left: 1rem">
+  <% errors.forEach(function(error) { %>
+  <li>Invalid value: "<%= error.value %>"</li>
+  <% }); %>
+</ul>
+<% } %>

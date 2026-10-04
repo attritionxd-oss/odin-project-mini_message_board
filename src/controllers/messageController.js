@@ -1,6 +1,16 @@
-import { sanitizeInput } from "#middleware/sanitizeInput.js";
+import { body, validationResult, matchedData } from "express-validator";
 import messagesQueries from "#db/messages/messages-queries.js";
 import usersQueries from "#db/users/users-queries.js";
+
+const validateMessage = [
+  body("userMessage")
+    .trim()
+    .notEmpty()
+    .withMessage("Message cannot be empty.")
+    .isLength({ min: 1, max: 2000 })
+    .withMessage("Message must be between 1 and 2,000 characters.")
+    .escape(),
+];
 
 export async function getAllMessages(req, res) {
   const messages = await messagesQueries.getAllMessages();
@@ -32,27 +42,41 @@ export async function getMessageForm(req, res) {
   });
 }
 
-export async function addMessage(req, res) {
-  const user = Number(sanitizeInput(req.body.user));
-  const message = sanitizeInput(req.body.message);
-
-  try {
-    const result = await messagesQueries.insertMessage(user, message);
-    if (result.rowCount === 0) {
-      console.warn("[INSERT MESSAGE] Failed");
-    } else {
-      // eslint-disable-next-line no-console
-      console.log(
-        `[INSERT MESSAGE] Successfully inserted message. ${result.rowCount} record(s) created.`,
-      );
+export const addMessage = [
+  validateMessage,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const users = await usersQueries.getAllUsers();
+      return res.status(400).render("layouts/new-message", {
+        title: "Create new message",
+        users: users,
+        userMessage: req.body.userMessage,
+        errors: errors.array(),
+      });
     }
-    res.redirect("/");
-  } catch (err) {
-    console.error("[INSERT MESSAGE FAILED]", err.message, {
-      code: err.message,
-    });
-  }
-}
+
+    const userId = Number(req.body.user);
+    const { userMessage } = matchedData(req);
+
+    try {
+      const result = await messagesQueries.insertMessage(userId, userMessage);
+      if (result.rowCount === 0) {
+        console.warn("[INSERT MESSAGE] Failed");
+      } else {
+        // eslint-disable-next-line no-console
+        console.log(
+          `[INSERT MESSAGE] Successfully inserted message. ${result.rowCount} record(s) created.`,
+        );
+      }
+      res.redirect("/");
+    } catch (err) {
+      console.error("[INSERT MESSAGE FAILED]", err.message, {
+        code: err.message,
+      });
+    }
+  },
+];
 
 export async function getMessageById(req, res) {
   const messageId = req.path.replace("/", "");
@@ -80,13 +104,40 @@ export async function deleteMessage(req, res) {
   res.redirect("/");
 }
 
-export async function editMessage(req, res) {
-  const messageId = Number(req.params.id);
-  const userMessage = req.body.userMessage;
-  const result = await messagesQueries.updateMessage(messageId, userMessage);
-  // eslint-disable-next-line no-console
-  console.log(
-    `[UPDATE MESSAGE] Successfully updated message ID: ${messageId} (${result.rowCount} record)`,
-  );
-  res.redirect("/");
-}
+export const editMessage = [
+  validateMessage,
+  async (req, res) => {
+    const messageId = Number(req.params.id);
+    const { userMessage } = matchedData(req);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const message = await messagesQueries.getMessageById(messageId);
+      const formattedMessage = {
+        id: message[0].id,
+        user: message[0].firstandlastname,
+        text: req.body.userMessage,
+        added: message[0].tstz,
+      };
+
+      res.status(400).render("layouts/message-layout", {
+        title: `Message from ${message[0].firstandlastname}`,
+        message: formattedMessage,
+        errors: errors.array(),
+      });
+    }
+
+    try {
+      const result = await messagesQueries.updateMessage(
+        messageId,
+        userMessage,
+      );
+      // eslint-disable-next-line no-console
+      console.log(
+        `[UPDATE MESSAGE] Successfully updated message ID: ${messageId} (${result.rowCount} record)`,
+      );
+      res.redirect("/");
+    } catch (err) {
+      console.error("[UPDATE MESSAGE FAILED]", err.message, { code: err.code });
+    }
+  },
+];

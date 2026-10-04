@@ -37,14 +37,14 @@
           <%- include("../partials/user-select") %>
           <textarea
             class="new-message__inputbox"
-            name="message"
+            name="userMessage"
             placeholder="Message"
             autocorrect="on"
             spellcheck="true"
             wrap="soft"
             required="true"
             aria-label="Message input"
-          ></textarea>
+          ><%= locals.userMessage %></textarea>
           <button
             type="submit"
             class="new-message__submit"
@@ -53,6 +53,7 @@
             <%- include("../partials/send-icon") %>
           </button>
         </form>
+        <%- include("../partials/errors") %>
       </section>
     </main>
     <%- include("../partials/footer")  %>
