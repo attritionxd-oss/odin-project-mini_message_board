@@ -1,0 +1,13 @@
+<select
+  class="new-message__inputbox"
+  name="user"
+  required="true"
+  aria-label="Username select"
+>
+  <option value="">Select user</option>
+  <% users.forEach((user) => { %>
+  <option value="<%= user.id %>">
+    <%= user.firstandlastname %> (<%= user.username %>)
+  </option>
+  <% }) %>
+</select>

@@ -34,14 +34,7 @@
               </button>
             </a>
           </span>
-          <input
-            class="new-message__inputbox"
-            type="text"
-            name="user"
-            placeholder="Username"
-            required="true"
-            aria-label="Username input"
-          />
+          <%- include("../partials/user-select") %>
           <textarea
             class="new-message__inputbox"
             name="message"

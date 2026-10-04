@@ -21,9 +21,11 @@
           <% messages.forEach((message) => { %>
           <li id="<%= message.id %>" class="all-messages__message-wrapper">
             <span class="all-messages__contents">
-              <span class="all-messages__user"><%= message.user %>:&nbsp;</span>
+              <span class="all-messages__user"
+                ><%= message.user || "no username" %>:&nbsp;</span
+              >
               <a href="/<%= message.id %>" class="all-messages__message">
-                <%= message.text %>
+                <%= message.text || "emtpy text" %>
               </a>
             </span>
             <span class="all-messages__add-date"><%= message.added %></span>

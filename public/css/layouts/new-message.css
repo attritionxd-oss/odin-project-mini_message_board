@@ -24,6 +24,7 @@
   border-radius: 0.4rem;
   border: 1px solid var(--card-border);
   padding: 0.4rem 0.8rem;
+  font-family: var(--font-family-sans);
 }
 
 .new-message__inputbox:focus-visible,

@@ -6,6 +6,8 @@ import globalRateLimiter from "#middleware/globalRateLimiter.js";
 import ipRateLimiter from "#middleware/ipRateLimiter.js";
 import {
   addMessage,
+  deleteMessage,
+  editMessage,
   getAllMessages,
   getMessageById,
   getMessageForm,
@@ -31,6 +33,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/new", getMessageForm);
 app.post("/new", addMessage);
+app.post("/:id/edit", editMessage);
+app.post("/:id/delete", deleteMessage);
 app.get("/:id", getMessageById);
 app.get("/", getAllMessages);
 

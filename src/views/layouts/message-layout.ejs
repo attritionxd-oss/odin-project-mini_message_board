@@ -17,31 +17,70 @@
     <%- include("../partials/navbar") %>
     <main class="main__main-wrapper">
       <section class="view-message__wrapper">
-        <ul class="view-message__content-details">
-          <li class="view-message__close-wrapper">
-            <a
-              href="/"
-              aria-label="Close button: Return to All Messages"
-              class="icon-link"
+        <div class="view-message__content-details-wrapper">
+          <ul class="view-message__content-details">
+            <li class="view-message__close-wrapper">
+              <a
+                href="/"
+                aria-label="Close button: Return to All Messages"
+                class="icon-link"
+              >
+                <button type="button" class="view-message__close">
+                  <%- include("../partials/close-icon") %>
+                </button>
+              </a>
+            </li>
+            <li class="view-message__message-property">
+              <span class="view-message__content-label">User</span>
+              <span class="view-message__content"><%= message.user %></span>
+            </li>
+            <li class="view-message__message-property">
+              <span class="view-message__content-label">Date sent</span>
+              <span class="view-message__content"><%= message.added %></span>
+            </li>
+            <li class="view-message__message-property">
+              <span class="view-message__content-label">Message</span>
+              <textarea
+                class="view-message__textarea"
+                name="userMessage"
+                placeholder="Message"
+                autocorrect="on"
+                spellcheck="true"
+                wrap="soft"
+                required="true"
+                aria-label="Message input"
+                form="edit-message-form"
+              ><%= message.text %></textarea>
+            </li>
+          </ul>
+          <div class="view-message__button-wrapper">
+            <form
+              id="edit-message-form"
+              action="/<%= message.id %>/edit"
+              method="post"
             >
-              <button type="button" class="view-message__close">
-                <%- include("../partials/close-icon") %>
+              <button
+                type="submit"
+                class="view-message__button view-message__edit"
+              >
+                Edit
               </button>
-            </a>
-          </li>
-          <li class="view-message__message-property">
-            <span class="view-message__content-label"> User </span>
-            <span class="view-message__content"> <%= message.user %> </span>
-          </li>
-          <li class="view-message__message-property">
-            <span class="view-message__content-label"> Date sent </span>
-            <span class="view-message__content"> <%= message.added %> </span>
-          </li>
-          <li class="view-message__message-property">
-            <span class="view-message__content-label"> Message </span>
-            <span class="view-message__content"> <%= message.text %> </span>
-          </li>
-        </ul>
+            </form>
+            <form action="/<%= message.id %>/delete" method="post">
+              <button
+                type="submit"
+                class="view-message__button view-message__delete"
+                onclick="
+                  return confirm(
+                    'Are you sure you want to delete this message?',
+                  );
+                "
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
     <%- include("../partials/footer")  %>
