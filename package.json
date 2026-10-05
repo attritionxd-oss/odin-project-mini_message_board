@@ -1,7 +1,7 @@
 {
   "name": "odin-project-mini_message_board",
   "version": "1.0.0",
-  "description": "A simple message board using Node.js, Express, EJS, with no data store.",
+  "description": "A simple message board using Node.js, Express, EJS.",
   "keywords": [
     "backend",
     "nodejs",
