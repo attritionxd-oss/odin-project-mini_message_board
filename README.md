@@ -26,7 +26,7 @@ Clone the repository:
 
 ```sh
 git clone git@github.com:attritionxd-oss/odin-project-mini_message_board.git
-cd odin-project-shopping_cart
+cd odin-project-mini_message_board
 ```
 
 Install dependencies:
